@@ -1,0 +1,12 @@
+Upload these HTML files directly to the ROOT of the restore-good-version branch.
+Do not upload the outer folder.
+This combined patch covers:
+- Home Start Your Request path
+- Estimate form submission
+- Booking form submission
+- Contact form submission
+- Success pages
+- Reviews cleanup
+- Updated phone/email in included pages
+After upload, commit, wait for GitHub Pages deployment, then Ctrl+F5.
+First FormSubmit submission may require activation from ahadelecticalsolutions@gmail.com.
