@@ -146,6 +146,123 @@ transform:skewX(-16deg) translateX(-240%);transition:transform .75s ease}
  #ahadServiceCursor:after{animation:none!important}
 }
 </style>
+
+<style id="ahad-plug-only-final">
+/* Regular browser cursor everywhere */
+.service-card,.service-card-pro,.category-card,.ev-feature-card,
+.service-card a,.service-card-pro a,.category-card a,.ev-feature-card a{
+ cursor:pointer!important;
+}
+#ahadServiceCursor{display:none!important}
+
+/* Remove banner sweep/border blinking. Only the plug itself animates. */
+.tesla-cert-banner:before,.tesla-cert-banner:after,
+.ev-cert-badge:before,.ev-cert-badge:after,
+.hero-ev-badge:before,.hero-ev-badge:after,
+.ev-certification:before,.ev-certification:after{
+ display:none!important;animation:none!important;
+}
+
+/* Tesla certification plug: bright electrical blink/pulse */
+.tesla-cert-banner .ev-icon,
+.tesla-cert-banner .service-icon,
+.tesla-cert-banner b:first-child,
+.ev-cert-badge .ev-icon,.hero-ev-badge .ev-icon,.ev-certification .ev-icon{
+ animation:teslaPlugBlink 1.55s ease-in-out infinite!important;
+}
+@keyframes teslaPlugBlink{
+ 0%,100%{transform:scale(1);filter:brightness(1) drop-shadow(0 0 0 rgba(255,218,92,0))}
+ 42%{transform:scale(1.12);filter:brightness(1.35) drop-shadow(0 0 12px rgba(255,218,92,.9))}
+ 58%{transform:scale(1.05);filter:brightness(1.15) drop-shadow(0 0 7px rgba(255,245,190,.7))}
+}
+@media(prefers-reduced-motion:reduce){
+ .tesla-cert-banner .ev-icon,.tesla-cert-banner .service-icon,.tesla-cert-banner b:first-child,
+ .ev-cert-badge .ev-icon,.hero-ev-badge .ev-icon,.ev-certification .ev-icon{animation:none!important}
+}
+</style>
+
+<style id="ahad-premium-service-strip-v1">
+/* Upgrade the six-category strip without changing its links/content */
+.quick-services,.service-tabs,.service-strip,.category-strip{
+  gap:12px!important;
+  background:transparent!important;
+}
+.quick-services a,.service-tabs a,.service-strip a,.category-strip a{
+  position:relative!important;
+  min-height:210px!important;
+  overflow:hidden!important;
+  border:1px solid rgba(25,25,25,.10)!important;
+  border-radius:18px!important;
+  background:linear-gradient(145deg,#fff 0%,#faf8f2 100%)!important;
+  box-shadow:0 8px 26px rgba(0,0,0,.06)!important;
+  transition:transform .38s cubic-bezier(.2,.8,.2,1),box-shadow .38s ease,
+             background .38s ease,color .38s ease,border-color .38s ease!important;
+}
+.quick-services a::before,.service-tabs a::before,.service-strip a::before,.category-strip a::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:radial-gradient(circle at 50% 25%,rgba(230,184,74,.20),transparent 38%),
+             linear-gradient(145deg,#151515,#080808);
+  transition:opacity .38s ease;
+}
+.quick-services a::after,.service-tabs a::after,.service-strip a::after,.category-strip a::after{
+  content:"";position:absolute;left:-55%;bottom:0;width:42%;height:3px;
+  background:linear-gradient(90deg,transparent,#d33b2e,#f0cb68,#fff1ae,#f0cb68,transparent);
+  box-shadow:0 0 16px rgba(238,197,91,.65);opacity:.75;
+  animation:serviceCurrent 4.8s ease-in-out infinite;
+}
+.quick-services a:hover,.service-tabs a:hover,.service-strip a:hover,.category-strip a:hover{
+  transform:translateY(-9px)!important;
+  border-color:rgba(226,183,71,.72)!important;
+  box-shadow:0 20px 42px rgba(0,0,0,.17),0 0 0 1px rgba(226,183,71,.15)!important;
+  color:#fff!important;
+}
+.quick-services a:hover::before,.service-tabs a:hover::before,.service-strip a:hover::before,.category-strip a:hover::before{opacity:1}
+.quick-services a>* ,.service-tabs a>* ,.service-strip a>* ,.category-strip a>*{position:relative;z-index:2}
+.quick-services a:hover *,.service-tabs a:hover *,.service-strip a:hover *,.category-strip a:hover *{color:#fff!important}
+
+/* Existing service symbols become premium animated energy nodes */
+.quick-services a b,.quick-services a .icon,
+.service-tabs a b,.service-tabs a .icon,
+.service-strip a b,.service-strip a .icon,
+.category-strip a b,.category-strip a .icon{
+  width:66px!important;height:66px!important;border-radius:50%!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  margin-bottom:18px!important;background:#111!important;color:#edc85f!important;
+  border:1px solid rgba(237,200,95,.55)!important;font-size:28px!important;
+  box-shadow:0 0 0 7px rgba(237,200,95,.08),0 8px 24px rgba(0,0,0,.12)!important;
+  animation:serviceNode 2.5s ease-in-out infinite!important;
+  transition:transform .3s ease,background .3s ease,color .3s ease!important;
+}
+.quick-services a:nth-child(2) b,.service-tabs a:nth-child(2) b,.service-strip a:nth-child(2) b,.category-strip a:nth-child(2) b{animation-delay:.18s!important}
+.quick-services a:nth-child(3) b,.service-tabs a:nth-child(3) b,.service-strip a:nth-child(3) b,.category-strip a:nth-child(3) b{animation-delay:.36s!important}
+.quick-services a:nth-child(4) b,.service-tabs a:nth-child(4) b,.service-strip a:nth-child(4) b,.category-strip a:nth-child(4) b{animation-delay:.54s!important}
+.quick-services a:nth-child(5) b,.service-tabs a:nth-child(5) b,.service-strip a:nth-child(5) b,.category-strip a:nth-child(5) b{animation-delay:.72s!important}
+.quick-services a:nth-child(6) b,.service-tabs a:nth-child(6) b,.service-strip a:nth-child(6) b,.category-strip a:nth-child(6) b{animation-delay:.90s!important}
+.quick-services a:hover b,.quick-services a:hover .icon,
+.service-tabs a:hover b,.service-tabs a:hover .icon,
+.service-strip a:hover b,.service-strip a:hover .icon,
+.category-strip a:hover b,.category-strip a:hover .icon{
+  transform:scale(1.12) rotate(-3deg)!important;background:#e6ba4a!important;color:#111!important;
+  box-shadow:0 0 0 9px rgba(230,186,74,.12),0 0 30px rgba(230,186,74,.52)!important;
+}
+@keyframes serviceNode{
+  0%,100%{filter:brightness(1);box-shadow:0 0 0 7px rgba(237,200,95,.07),0 8px 24px rgba(0,0,0,.12)}
+  50%{filter:brightness(1.28);box-shadow:0 0 0 11px rgba(237,200,95,0),0 0 22px rgba(237,200,95,.42)}
+}
+@keyframes serviceCurrent{
+  0%,16%{left:-55%;opacity:0}
+  28%{opacity:1}
+  52%{left:115%;opacity:.9}
+  60%,100%{left:115%;opacity:0}
+}
+@media(max-width:900px){
+ .quick-services a,.service-tabs a,.service-strip a,.category-strip a{min-height:175px!important;border-radius:14px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .quick-services a::after,.service-tabs a::after,.service-strip a::after,.category-strip a::after,
+ .quick-services a b,.service-tabs a b,.service-strip a b,.category-strip a b{animation:none!important}
+}
+</style>
 </head><body><header class="site-header"><a class="brand" href="index.html"><img src="assets/ahad-logo-original.png" alt="Ahad Electrical"></a>
 <nav class="desktop-nav"><a href="index.html">Home</a><div class="has-mega"><button>Services <span>⌄</span></button><div class="mega"><div><small>ELECTRICAL SERVICES</small><h3>How can we help?</h3><p>Choose the Ahad service that best matches your electrical need.</p><a class="mini-cta" href="service-finder.html">Not sure? Find your service →</a></div><div class="mega-links"><a href="troubleshooting.html"><b>⚡</b><span>Troubleshooting & Repairs</span></a><a href="panels.html"><b>▣</b><span>Electrical Panels</span></a><a href="indoor-lighting.html"><b>✦</b><span>Indoor Lighting</span></a><a href="outdoor-lighting.html"><b>☀</b><span>Outdoor Lighting</span></a><a href="outlets-switches.html"><b>⌁</b><span>Outlets & Switches</span></a><a href="circuits-wiring.html"><b>⌇</b><span>Circuits & Wiring</span></a></div></div></div><a href="projects.html">Our Work</a><a href="reviews.html">Reviews</a><a href="service-areas.html">Service Areas</a><a href="faq.html">FAQs</a><a href="contact.html">Contact</a></nav>
 <div class="head-actions"><a class="phone" href="tel:+19452898250">☎ <b>(945) 289-8250</b></a><a class="btn red" href="estimate.html">Get a Free Estimate</a></div><button class="menu-toggle" aria-label="Open menu">☰</button></header>
@@ -202,7 +319,7 @@ transform:skewX(-16deg) translateX(-240%);transition:transform .75s ease}
 })();
 </script>
 
-<script id="ahad-service-cursor-v3">
+<script id="ahad-service-cursor-v3" type="text/plain">
 (function(){
   if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
   const cursor=document.createElement('div');
