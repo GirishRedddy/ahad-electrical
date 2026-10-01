@@ -41,9 +41,15 @@ const serviceData = {
 "fans-installation":["Fans Installation","1 hr","correct-indoor-fan.jpg?v=20260930b"],
 "outdoor-focus-lights":["Outdoor Focus Lights","5 hrs","correct-outdoor-lighting.jpg?v=20260930b"],
 "led-panel-installations":["LED Panel Installations","2 hrs","commercial-led-work.jpg"],
-"ev-charger-hardwire":["Tesla & EV Charger Installation","1 hr","user-ev-panel.jpg"],
+"ev-charger-hardwire":["EV Charger Installation Hard Wire Beside the Braker Box Panel","1 hr","user-ev-panel.jpg"],
 "nema-14-50":["NEMA 14-50 Outlet","1 hr 30 mins","nema-14-50.jpg"],
-"tesla-powerwall-3":["Tesla Powerwall 3 Installation","8 hrs","user-powerwall-install.jpg"]
+"tesla-powerwall-3":["Tesla Powerwall 3 Installation","8 hrs","user-powerwall-install.jpg"],
+  "troubleshooting":["Troubleshooting & Repairs","1 hr","user-electrician.jpg"],
+  "panels":["Electrical Panels","1 hr","user-panel.jpg"],
+  "indoor-lighting":["Indoor Lighting","1 hr","user-indoor-fan-light.jpg"],
+  "outdoor-lighting":["Outdoor Lighting","1 hr","user-outdoor-lighting.jpg"],
+  "outlets-switches":["Outlets & Switches","1 hr","home-outlets-switches.jpg"],
+  "circuits-wiring":["Circuits & Wiring","1 hr","commercial-led-work.jpg"]
 };
 const bf=q('#bookingForm'), bsteps=qa('.book-step'), bp=qa('.booking-progress span'); let bs=0;
 function showBook(n){bs=Math.max(0,Math.min(4,n));bsteps.forEach((x,i)=>x.classList.toggle('active',i===bs));bp.forEach((x,i)=>x.classList.toggle('active',i<=bs)); if(bs===4) renderReview(); scrollTo({top:0,behavior:'smooth'})}
@@ -56,22 +62,20 @@ qa('.book-next').forEach(b=>b.addEventListener('click',()=>{
 }));
 qa('.book-back').forEach(b=>b.addEventListener('click',()=>showBook(bs-1)));
 const bsel=q('#bookService'); if(bsel){
-  let requested=new URLSearchParams(location.search).get('service')||'';
-  let slug=requested;
+  const slug=new URLSearchParams(location.search).get('service')||'';
   if(serviceData[slug] && [...bsel.options].some(o=>o.value===slug)){
     bsel.value=slug;
-    const notice=q('#preselectedNotice'), title=q('#preselectedTitle');
-    if(notice&&title){title.textContent=serviceData[slug][0];notice.hidden=false;}
+    const n=q('#preselectedNotice'),t=q('#preselectedTitle');
+    if(n&&t){t.textContent=serviceData[slug][0];n.hidden=false;}
   }
   function updateService(){
-    let d=serviceData[bsel.value];
+    const d=serviceData[bsel.value];
     q('#selectedService').innerHTML=d?`<b>${d[0]}</b><br>${d[1]} | Quote provided by Ahad`:'';
     q('#bookingServiceSummary').innerHTML=d?`<h3>${d[0]}</h3><p>${d[1]} | Contact us for quote</p><img src="assets/${d[2]}" alt="">`:'';
-    const notice=q('#preselectedNotice'), title=q('#preselectedTitle');
-    if(notice&&title&&d){title.textContent=d[0];}
+    const n=q('#preselectedNotice'),t=q('#preselectedTitle');
+    if(n&&t&&d)t.textContent=d[0];
   }
-  bsel.addEventListener('change',updateService);
-  updateService();
+  bsel.addEventListener('change',updateService);updateService()
 }
 let view=new Date(); view.setDate(1); const today=new Date(); today.setHours(0,0,0,0);
 function drawCal(){let cal=q('#calendar');if(!cal)return;cal.innerHTML='';q('#monthTitle').textContent=view.toLocaleDateString('en-US',{month:'long',year:'numeric'});let first=new Date(view.getFullYear(),view.getMonth(),1).getDay(),days=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();for(let i=0;i<first;i++)cal.append(document.createElement('span'));for(let d=1;d<=days;d++){let dt=new Date(view.getFullYear(),view.getMonth(),d),btn=document.createElement('button');btn.type='button';btn.textContent=d;btn.disabled=dt<today;btn.onclick=()=>{qa('#calendar button').forEach(x=>x.classList.remove('selected'));btn.classList.add('selected');q('#dateField').value=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`};cal.append(btn)}}drawCal();
