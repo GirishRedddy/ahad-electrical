@@ -1,0 +1,9 @@
+AHAD image-only correction
+
+Upload the HTML files in this folder to the ROOT of the restore-good-version branch and replace existing files.
+Do NOT upload or change styles.css or assets for this patch.
+
+Changes only:
+1) Header brand image is forced back to assets/ahad-logo-original.png on affected service pages.
+2) Related Work images corrected on Troubleshooting, Panels, Indoor Lighting, and Outdoor Lighting.
+3) Outdoor Lighting intentionally shows one real outdoor project photo because the two available outdoor files are byte-identical duplicates. This avoids repeating the same photo.
