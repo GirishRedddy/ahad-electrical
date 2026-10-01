@@ -54,6 +54,50 @@ transform:skewX(-16deg) translateX(-240%);transition:transform .75s ease}
  .reveal{opacity:1;transform:none;transition:none}
 }
 </style>
+
+<style id="ahad-all-service-icon-cursor-v3">
+/* Equal animated electrical treatment for every homepage service symbol */
+.service-icon,.ev-icon,.service-card b:first-child,.service-card-pro b:first-child,.category-card b:first-child{
+  width:74px!important;height:74px!important;border-radius:50%!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  background:linear-gradient(145deg,#f2cf69,#d9ad43)!important;
+  color:#17120a!important;font-size:30px!important;line-height:1!important;
+  box-shadow:0 0 0 0 rgba(228,185,79,.58),0 9px 26px rgba(0,0,0,.22)!important;
+  animation:ahadIconPulse 2s ease-in-out infinite!important;
+  transform-origin:center!important;
+}
+.service-card:nth-of-type(2) .service-icon,.service-card-pro:nth-of-type(2) .service-icon{animation-delay:.18s!important}
+.service-card:nth-of-type(3) .service-icon,.service-card-pro:nth-of-type(3) .service-icon{animation-delay:.36s!important}
+.service-card:nth-of-type(4) .service-icon,.service-card-pro:nth-of-type(4) .service-icon{animation-delay:.54s!important}
+.service-card:nth-of-type(5) .service-icon,.service-card-pro:nth-of-type(5) .service-icon{animation-delay:.72s!important}
+.service-card:nth-of-type(6) .service-icon,.service-card-pro:nth-of-type(6) .service-icon{animation-delay:.90s!important}
+@keyframes ahadIconPulse{
+  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(228,185,79,.48),0 9px 26px rgba(0,0,0,.22)}
+  48%{transform:scale(1.09);box-shadow:0 0 0 12px rgba(228,185,79,0),0 0 26px rgba(242,207,105,.72)}
+  58%{transform:scale(1.03)}
+}
+/* Custom service-aware cursor */
+@media (hover:hover) and (pointer:fine){
+  .service-card,.service-card-pro,.category-card,.ev-feature-card{cursor:none!important}
+  #ahadServiceCursor{
+    position:fixed;left:0;top:0;width:58px;height:58px;border-radius:50%;z-index:99999;
+    pointer-events:none;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(145deg,#f2cf69,#d9ad43);color:#111;font-size:25px;
+    border:2px solid rgba(255,255,255,.9);
+    box-shadow:0 0 0 5px rgba(228,185,79,.18),0 0 24px rgba(228,185,79,.68);
+    opacity:0;transform:translate(-50%,-50%) scale(.72);
+    transition:opacity .16s ease,transform .16s ease,box-shadow .18s ease;
+  }
+  #ahadServiceCursor.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  #ahadServiceCursor.action{transform:translate(-50%,-50%) scale(1.18);box-shadow:0 0 0 8px rgba(228,185,79,.15),0 0 34px rgba(228,185,79,.85)}
+  #ahadServiceCursor:after{content:"";position:absolute;inset:-8px;border:1px solid rgba(228,185,79,.48);border-radius:50%;animation:cursorCurrent 1.25s linear infinite}
+  @keyframes cursorCurrent{0%{transform:scale(.82);opacity:.8}100%{transform:scale(1.32);opacity:0}}
+}
+@media(prefers-reduced-motion:reduce){
+ .service-icon,.ev-icon,.service-card b:first-child,.service-card-pro b:first-child,.category-card b:first-child{animation:none!important}
+ #ahadServiceCursor:after{animation:none!important}
+}
+</style>
 </head><body><header class="site-header"><a class="brand" href="index.html"><img src="assets/ahad-logo-original.png" alt="Ahad Electrical"></a>
 <nav class="desktop-nav"><a href="index.html">Home</a><div class="has-mega"><button>Services <span>⌄</span></button><div class="mega"><div><small>ELECTRICAL SERVICES</small><h3>How can we help?</h3><p>Choose the Ahad service that best matches your electrical need.</p><a class="mini-cta" href="service-finder.html">Not sure? Find your service →</a></div><div class="mega-links"><a href="troubleshooting.html"><b>⚡</b><span>Troubleshooting & Repairs</span></a><a href="panels.html"><b>▣</b><span>Electrical Panels</span></a><a href="indoor-lighting.html"><b>✦</b><span>Indoor Lighting</span></a><a href="outdoor-lighting.html"><b>☀</b><span>Outdoor Lighting</span></a><a href="outlets-switches.html"><b>⌁</b><span>Outlets & Switches</span></a><a href="circuits-wiring.html"><b>⌇</b><span>Circuits & Wiring</span></a></div></div></div><a href="projects.html">Our Work</a><a href="reviews.html">Reviews</a><a href="service-areas.html">Service Areas</a><a href="faq.html">FAQs</a><a href="contact.html">Contact</a></nav>
 <div class="head-actions"><a class="phone" href="tel:+19452898250">☎ <b>(945) 289-8250</b></a><a class="btn red" href="estimate.html">Get a Free Estimate</a></div><button class="menu-toggle" aria-label="Open menu">☰</button></header>
@@ -107,6 +151,40 @@ transform:skewX(-16deg) translateX(-240%);transition:transform .75s ease}
   els.forEach(function(el){el.classList.add('scroll-enhanced')});
   var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -45px 0px'});
   els.forEach(function(el){io.observe(el)});
+})();
+</script>
+
+<script id="ahad-service-cursor-v3">
+(function(){
+  if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  const cursor=document.createElement('div');
+  cursor.id='ahadServiceCursor';
+  cursor.setAttribute('aria-hidden','true');
+  document.body.appendChild(cursor);
+
+  const cards=[...document.querySelectorAll('.service-card,.service-card-pro,.category-card,.ev-feature-card')];
+  function symbolFor(card){
+    const s=((card.innerText||'')+' '+(card.getAttribute('href')||'')+' '+([...(card.querySelectorAll('a'))].map(a=>a.getAttribute('href')||'').join(' '))).toLowerCase();
+    if(s.includes('tesla')||s.includes('ev charger')||s.includes('ev-charger')) return '🔌';
+    if(s.includes('troubleshoot')||s.includes('repair')) return '⚡';
+    if(s.includes('panel')) return '▣';
+    if(s.includes('indoor')||s.includes('lighting')) return '💡';
+    if(s.includes('outdoor')) return '☀';
+    if(s.includes('outlet')||s.includes('switch')) return '🔌';
+    if(s.includes('circuit')||s.includes('wiring')) return '⌁';
+    return '⚡';
+  }
+  document.addEventListener('mousemove',e=>{
+    cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px';
+  },{passive:true});
+  cards.forEach(card=>{
+    card.addEventListener('mouseenter',()=>{cursor.textContent=symbolFor(card);cursor.classList.add('show')});
+    card.addEventListener('mouseleave',()=>cursor.classList.remove('show','action'));
+    card.querySelectorAll('a,button').forEach(el=>{
+      el.addEventListener('mouseenter',()=>cursor.classList.add('action'));
+      el.addEventListener('mouseleave',()=>cursor.classList.remove('action'));
+    });
+  });
 })();
 </script>
 </body></html>
