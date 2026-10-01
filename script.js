@@ -41,7 +41,7 @@ const serviceData = {
 "fans-installation":["Fans Installation","1 hr","correct-indoor-fan.jpg?v=20260930b"],
 "outdoor-focus-lights":["Outdoor Focus Lights","5 hrs","correct-outdoor-lighting.jpg?v=20260930b"],
 "led-panel-installations":["LED Panel Installations","2 hrs","commercial-led-work.jpg"],
-"ev-charger-hardwire":["EV Charger Installation Hard Wire Beside the Braker Box Panel","1 hr","user-ev-panel.jpg"],
+"ev-charger-hardwire":["Tesla & EV Charger Installation","1 hr","user-ev-panel.jpg"],
 "nema-14-50":["NEMA 14-50 Outlet","1 hr 30 mins","nema-14-50.jpg"],
 "tesla-powerwall-3":["Tesla Powerwall 3 Installation","8 hrs","user-powerwall-install.jpg"]
 };
@@ -55,7 +55,24 @@ qa('.book-next').forEach(b=>b.addEventListener('click',()=>{
   showBook(bs+1)
 }));
 qa('.book-back').forEach(b=>b.addEventListener('click',()=>showBook(bs-1)));
-const bsel=q('#bookService'); if(bsel){let slug=new URLSearchParams(location.search).get('service');if(serviceData[slug])bsel.value=slug;function updateService(){let d=serviceData[bsel.value];q('#selectedService').innerHTML=d?`<b>${d[0]}</b><br>${d[1]} | Quote provided by Ahad`:'';q('#bookingServiceSummary').innerHTML=d?`<h3>${d[0]}</h3><p>${d[1]} | Contact us for quote</p><img src="assets/${d[2]}" alt="">`:''}bsel.addEventListener('change',updateService);updateService()}
+const bsel=q('#bookService'); if(bsel){
+  let requested=new URLSearchParams(location.search).get('service')||'';
+  let slug=requested;
+  if(serviceData[slug] && [...bsel.options].some(o=>o.value===slug)){
+    bsel.value=slug;
+    const notice=q('#preselectedNotice'), title=q('#preselectedTitle');
+    if(notice&&title){title.textContent=serviceData[slug][0];notice.hidden=false;}
+  }
+  function updateService(){
+    let d=serviceData[bsel.value];
+    q('#selectedService').innerHTML=d?`<b>${d[0]}</b><br>${d[1]} | Quote provided by Ahad`:'';
+    q('#bookingServiceSummary').innerHTML=d?`<h3>${d[0]}</h3><p>${d[1]} | Contact us for quote</p><img src="assets/${d[2]}" alt="">`:'';
+    const notice=q('#preselectedNotice'), title=q('#preselectedTitle');
+    if(notice&&title&&d){title.textContent=d[0];}
+  }
+  bsel.addEventListener('change',updateService);
+  updateService();
+}
 let view=new Date(); view.setDate(1); const today=new Date(); today.setHours(0,0,0,0);
 function drawCal(){let cal=q('#calendar');if(!cal)return;cal.innerHTML='';q('#monthTitle').textContent=view.toLocaleDateString('en-US',{month:'long',year:'numeric'});let first=new Date(view.getFullYear(),view.getMonth(),1).getDay(),days=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();for(let i=0;i<first;i++)cal.append(document.createElement('span'));for(let d=1;d<=days;d++){let dt=new Date(view.getFullYear(),view.getMonth(),d),btn=document.createElement('button');btn.type='button';btn.textContent=d;btn.disabled=dt<today;btn.onclick=()=>{qa('#calendar button').forEach(x=>x.classList.remove('selected'));btn.classList.add('selected');q('#dateField').value=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`};cal.append(btn)}}drawCal();
 q('#prevMonth')?.addEventListener('click',()=>{view.setMonth(view.getMonth()-1);drawCal()});q('#nextMonth')?.addEventListener('click',()=>{view.setMonth(view.getMonth()+1);drawCal()});qa('.times button').forEach(b=>b.addEventListener('click',()=>{qa('.times button').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');q('#timeField').value=b.textContent}));
