@@ -82,3 +82,11 @@
 .booking-catalog .card-image{height:340px!important;padding:14px!important;background:#f4f2ed!important}
 .booking-catalog .card-image img,.related-scroll img,.calendar-layout aside img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center center!important;transform:none!important}
 @media(max-width:1100px){.hero-copy{width:100%!important}}
+
+
+/* 2026-10-01 related-service gallery cleanup: one real/relevant image per card, full image visible, no collage zoom. */
+.related-pro .related-scroll{align-items:stretch!important}
+.related-pro .related-scroll a{background:#fff!important;border:1px solid #ddd!important;display:flex!important;flex-direction:column!important;overflow:hidden!important}
+.related-pro .related-scroll img{display:block!important;width:100%!important;height:240px!important;object-fit:contain!important;object-position:center center!important;background:#f3f1ec!important;padding:0!important;margin:0!important;transform:none!important}
+.related-pro .related-scroll span{min-height:72px!important;display:flex!important;align-items:center!important;padding:16px 18px!important;margin:0!important}
+@media(max-width:700px){.related-pro .related-scroll img{height:260px!important}.related-pro .related-scroll span{min-height:auto!important}}
