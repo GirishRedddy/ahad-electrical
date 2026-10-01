@@ -1,9 +1,7 @@
-AHAD image-only correction
-
-Upload the HTML files in this folder to the ROOT of the restore-good-version branch and replace existing files.
-Do NOT upload or change styles.css or assets for this patch.
-
-Changes only:
-1) Header brand image is forced back to assets/ahad-logo-original.png on affected service pages.
-2) Related Work images corrected on Troubleshooting, Panels, Indoor Lighting, and Outdoor Lighting.
-3) Outdoor Lighting intentionally shows one real outdoor project photo because the two available outdoor files are byte-identical duplicates. This avoids repeating the same photo.
+Upload these files to the ROOT of the restore-good-version branch, preserving the assets folder.
+This update changes:
+1) Phone everywhere to (945) 289-8250 / tel:+19452898250
+2) Email in site footers to ahadelecticalsolutions@gmail.com
+3) reviews.html with verified public review information currently available
+4) Troubleshooting & Repairs Related Work: replaces the repeated middle image with generated-troubleshooting-diagnostic.png
+5) styles.css only adds scoped review-page styles; existing styles remain intact.
