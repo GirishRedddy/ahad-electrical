@@ -1,0 +1,7 @@
+Upload these files to the ROOT of the restore-good-version branch, preserving the assets folder.
+This update changes:
+1) Phone everywhere to (945) 289-8250 / tel:+19452898250
+2) Email in site footers to ahadelecticalsolutions@gmail.com
+3) reviews.html with verified public review information currently available
+4) Troubleshooting & Repairs Related Work: replaces the repeated middle image with generated-troubleshooting-diagnostic.png
+5) styles.css only adds scoped review-page styles; existing styles remain intact.

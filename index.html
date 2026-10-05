@@ -1,20 +1,343 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Expert Electrical Services in DFW | Ahad Electrical</title><meta name="description" content="Ahad Electrical services in DFW."><link rel="stylesheet" href="styles.css"></head><body><header class="site-header"><a class="brand" href="index.html"><img src="assets/ahad-logo-original.png" alt="Ahad Electrical"></a>
-<nav class="desktop-nav"><a href="index.html">Home</a><div class="has-mega"><button>Services <span>⌄</span></button><div class="mega"><div><small>ELECTRICAL SERVICES</small><h3>How can we help?</h3><p>Choose the Ahad service that best matches your electrical need.</p><a class="mini-cta" href="service-finder.html">Not sure? Find your service →</a></div><div class="mega-links"><a href="troubleshooting.html"><b>⚡</b><span>Troubleshooting & Repairs</span></a><a href="panels.html"><b>▣</b><span>Electrical Panels</span></a><a href="indoor-lighting.html"><b>✦</b><span>Indoor Lighting</span></a><a href="outdoor-lighting.html"><b>☀</b><span>Outdoor Lighting</span></a><a href="outlets-switches.html"><b>⌁</b><span>Outlets & Switches</span></a><a href="circuits-wiring.html"><b>⌇</b><span>Circuits & Wiring</span></a></div></div></div><a href="projects.html">Our Work</a><a href="reviews.html">Reviews</a><a href="service-areas.html">Service Areas</a><a href="faq.html">FAQs</a><a href="contact.html">Contact</a></nav>
-<div class="head-actions"><a class="phone" href="tel:+19452898250">☎ <b>(945) 289-8250</b></a><a class="btn red" href="estimate.html">Get a Free Estimate</a></div><button class="menu-toggle" aria-label="Open menu">☰</button></header>
-<div class="mobile-menu"><button class="menu-close">×</button><a href="index.html">Home</a><a href="services.html">Services</a><a href="projects.html">Our Work</a><a href="reviews.html">Reviews</a><a href="service-areas.html">Service Areas</a><a href="faq.html">FAQs</a><a href="contact.html">Contact</a><a class="btn red" href="estimate.html">Get a Free Estimate</a></div><main>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Expert Electrical Services in DFW | Ahad Electrical</title><meta name="description" content="Ahad Electrical services in DFW."><link rel="stylesheet" href="styles.css">
+<style>
+/* Ahad electrical motion pass */
+.service-card{position:relative;isolation:isolate}
+.service-card::after{content:"";position:absolute;inset:-35% auto -35% -45%;width:34%;z-index:3;pointer-events:none;
+background:linear-gradient(90deg,transparent,rgba(255,221,112,.32),transparent);
+transform:skewX(-16deg) translateX(-240%);transition:transform .75s ease}
+.service-card:hover::after{transform:skewX(-16deg) translateX(520%)}
+.service-card .service-icon{transition:transform .35s ease,filter .35s ease}
+.service-card:hover .service-icon{transform:translateY(-4px) scale(1.08);filter:drop-shadow(0 0 10px rgba(230,184,74,.55))}
+.ev-feature-card{box-shadow:0 18px 50px rgba(0,0,0,.16)}
+.ev-feature-card .card-photo{transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease}
+.ev-feature-card:hover .card-photo{transform:scale(1.045);filter:saturate(1.08) contrast(1.03)}
+.ev-feature-card .ev-icon{animation:none}
+</style>
+
+<style id="ahad-electrical-motion-v2">
+/* Electrical-themed motion applied to ALL home service cards */
+.service-card,.service-card-pro,.category-card,.ev-feature-card{
+  position:relative;overflow:hidden;
+  transition:transform .42s cubic-bezier(.2,.8,.2,1),box-shadow .42s ease,border-color .42s ease!important;
+}
+.service-card:hover,.service-card-pro:hover,.category-card:hover,.ev-feature-card:hover{
+  transform:translateY(-10px)!important;
+  box-shadow:0 20px 46px rgba(0,0,0,.18)!important;
+}
+.service-card img,.service-card-pro img,.category-card img,.ev-feature-card img{
+  transition:transform .75s cubic-bezier(.2,.8,.2,1),filter .55s ease!important;
+}
+.service-card:hover img,.service-card-pro:hover img,.category-card:hover img,.ev-feature-card:hover img{
+  transform:scale(1.055)!important;filter:contrast(1.04) saturate(1.08)!important;
+}
+/* animated electrical current sweep */
+.service-card:before,.service-card-pro:before,.category-card:before,.ev-feature-card:before{
+  content:"";position:absolute;z-index:8;pointer-events:none;left:-55%;top:0;width:32%;height:100%;
+  background:linear-gradient(105deg,transparent 15%,rgba(255,215,95,.12) 40%,rgba(255,232,150,.55) 50%,rgba(255,215,95,.12) 60%,transparent 85%);
+  transform:skewX(-14deg);opacity:0;
+}
+.service-card:hover:before,.service-card-pro:hover:before,.category-card:hover:before,.ev-feature-card:hover:before{
+  animation:electricSweep .9s ease-out;
+}
+@keyframes electricSweep{0%{left:-55%;opacity:0}18%{opacity:1}100%{left:125%;opacity:0}}
+/* subtle live-current accent on every card */
+.service-card:after,.service-card-pro:after,.category-card:after,.ev-feature-card:after{
+  content:"";position:absolute;left:0;right:100%;bottom:0;height:3px;z-index:9;
+  background:linear-gradient(90deg,#c93527,#e4b94f,#fff3b0,#e4b94f,#c93527);
+  box-shadow:0 0 12px rgba(228,185,79,.65);transition:right .5s ease;
+}
+.service-card:hover:after,.service-card-pro:hover:after,.category-card:hover:after,.ev-feature-card:hover:after{right:0}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+ .service-card:before,.service-card-pro:before,.category-card:before,.ev-feature-card:before{display:none}
+ .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+
+
+
+
+
+
+
+
+
+<style id="ahad-home-final-correction">
+/* Keep the standard browser cursor everywhere. */
+a,button,.service-card,.service-rail a{cursor:pointer!important}
+
+/* Hero copy entrance: restore motion without changing layout. */
+.hero-copy .kicker{animation:heroKickerIn .7s .08s both}
+.hero-copy h1{animation:heroTitleIn .9s .16s cubic-bezier(.18,.8,.22,1) both}
+.hero-copy>p{animation:heroTextIn .75s .32s both}
+.ev-hero-badge{animation:heroBadgeIn .8s .44s cubic-bezier(.18,.8,.22,1) both}
+.hero-buttons{animation:heroTextIn .75s .56s both}
+.quick-links{animation:heroTextIn .75s .68s both}
+@keyframes heroKickerIn{from{opacity:0;transform:translateY(14px);letter-spacing:.18em}to{opacity:1;transform:none}}
+@keyframes heroTitleIn{from{opacity:0;transform:translateY(38px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes heroTextIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes heroBadgeIn{from{opacity:0;transform:translateX(-34px)}to{opacity:1;transform:none}}
+
+/* Tesla badge keeps its premium motion. */
+.ev-hero-badge{position:relative!important;overflow:hidden!important}
+.ev-hero-badge:after{
+ content:"";position:absolute;top:-55%;bottom:-55%;left:-28%;width:16%;pointer-events:none;
+ background:linear-gradient(105deg,transparent,rgba(255,244,194,.78),transparent);
+ transform:skewX(-18deg);animation:evBadgeSweep 4.8s ease-in-out infinite;
+}
+@keyframes evBadgeSweep{
+ 0%,52%{left:-28%;opacity:0}58%{opacity:.85}76%{left:116%;opacity:.55}82%,100%{left:116%;opacity:0}
+}
+.ev-hero-badge .ev-plug{
+ animation:heroPlugBlink 1.55s ease-in-out infinite!important;
+ transform-origin:center;
+}
+@keyframes heroPlugBlink{
+ 0%,100%{transform:scale(1);filter:brightness(1);box-shadow:0 0 0 7px rgba(224,185,79,.12)}
+ 45%{transform:scale(1.13);filter:brightness(1.35);box-shadow:0 0 0 13px rgba(224,185,79,0),0 0 24px rgba(244,205,91,.82)}
+ 58%{transform:scale(1.05);filter:brightness(1.15)}
+}
+
+/* Actual homepage service rail — premium interactive cards. */
+.service-rail{
+ display:grid!important;
+ grid-template-columns:repeat(7,minmax(0,1fr))!important;
+ gap:10px!important;
+ padding:12px!important;
+ background:#f4f3ef!important;
+ border-radius:22px!important;
+ box-shadow:0 18px 46px rgba(0,0,0,.09)!important;
+ overflow:visible!important;
+}
+.service-rail>a{
+ position:relative!important;
+ min-height:178px!important;
+ display:flex!important;
+ flex-direction:column!important;
+ align-items:center!important;
+ justify-content:center!important;
+ gap:15px!important;
+ padding:22px 12px!important;
+ text-align:center!important;
+ text-decoration:none!important;
+ color:#111!important;
+ background:linear-gradient(145deg,#fff,#faf8f1)!important;
+ border:1px solid rgba(17,17,17,.09)!important;
+ border-radius:17px!important;
+ overflow:hidden!important;
+ box-shadow:0 7px 22px rgba(0,0,0,.055)!important;
+ transition:transform .36s cubic-bezier(.2,.8,.2,1),box-shadow .36s ease,border-color .36s ease,color .36s ease!important;
+}
+.service-rail>a:before{
+ content:"";position:absolute;inset:0;opacity:0;pointer-events:none;
+ background:radial-gradient(circle at 50% 20%,rgba(229,185,72,.23),transparent 38%),linear-gradient(145deg,#171717,#070707);
+ transition:opacity .36s ease;
+}
+.service-rail>a:after{
+ content:"";position:absolute;left:-70%;bottom:0;width:55%;height:3px;
+ background:linear-gradient(90deg,transparent,#c93428,#efc75d,#fff2b4,#efc75d,transparent);
+ box-shadow:0 0 14px rgba(239,199,93,.68);
+ animation:railCurrent 4.6s ease-in-out infinite;
+}
+.service-rail>a:nth-child(2):after{animation-delay:.35s}
+.service-rail>a:nth-child(3):after{animation-delay:.7s}
+.service-rail>a:nth-child(4):after{animation-delay:1.05s}
+.service-rail>a:nth-child(5):after{animation-delay:1.4s}
+.service-rail>a:nth-child(6):after{animation-delay:1.75s}
+.service-rail>a:nth-child(7):after{animation-delay:2.1s}
+.service-rail>a i{
+ position:relative;z-index:2;
+ width:62px!important;height:62px!important;border-radius:50%!important;
+ display:grid!important;place-items:center!important;
+ background:#111!important;color:#efc85f!important;
+ border:1px solid rgba(239,200,95,.55)!important;
+ font-size:27px!important;font-style:normal!important;
+ box-shadow:0 0 0 7px rgba(239,200,95,.08),0 8px 22px rgba(0,0,0,.12)!important;
+ animation:railNode 2.35s ease-in-out infinite!important;
+}
+.service-rail>a:nth-child(2) i{animation-delay:.18s!important}
+.service-rail>a:nth-child(3) i{animation-delay:.36s!important}
+.service-rail>a:nth-child(4) i{animation-delay:.54s!important}
+.service-rail>a:nth-child(5) i{animation-delay:.72s!important}
+.service-rail>a:nth-child(6) i{animation-delay:.90s!important}
+.service-rail>a span{position:relative;z-index:2;font-weight:800!important;line-height:1.2!important}
+.service-rail>a:hover{transform:translateY(-8px)!important;color:#fff!important;border-color:rgba(231,187,75,.72)!important;box-shadow:0 20px 38px rgba(0,0,0,.16)!important}
+.service-rail>a:hover:before{opacity:1}
+.service-rail>a:hover i{background:#e6ba4a!important;color:#111!important;transform:scale(1.1)!important;box-shadow:0 0 0 9px rgba(230,186,74,.10),0 0 28px rgba(230,186,74,.52)!important}
+.service-rail .rail-ev{border-color:rgba(210,55,43,.36)!important}
+.service-rail .rail-ev i{animation:heroPlugBlink 1.55s ease-in-out infinite!important}
+.service-rail .rail-all i{font-size:31px!important}
+@keyframes railNode{
+ 0%,100%{transform:scale(1);filter:brightness(1)}
+ 50%{transform:scale(1.07);filter:brightness(1.28);box-shadow:0 0 0 11px rgba(239,200,95,0),0 0 22px rgba(239,200,95,.45)}
+}
+@keyframes railCurrent{
+ 0%,16%{left:-70%;opacity:0}27%{opacity:1}50%{left:118%;opacity:.9}58%,100%{left:118%;opacity:0}
+}
+@media(max-width:1100px){.service-rail{grid-template-columns:repeat(4,1fr)!important}}
+@media(max-width:700px){.service-rail{grid-template-columns:repeat(2,1fr)!important}.service-rail>a{min-height:150px!important}}
+@media(prefers-reduced-motion:reduce){
+ .hero-copy .kicker,.hero-copy h1,.hero-copy>p,.ev-hero-badge,.hero-buttons,.quick-links,
+ .ev-hero-badge:after,.ev-hero-badge .ev-plug,.service-rail>a:after,.service-rail>a i{animation:none!important}
+}
+</style>
+
+
+<style id="ahad-catchy-contact-v1">
+/* Catchy but professional header phone treatment */
+.site-header .phone{
+ position:relative!important;isolation:isolate!important;overflow:hidden!important;
+ display:inline-flex!important;align-items:center!important;gap:10px!important;
+ padding:14px 20px!important;border:1px solid rgba(210,47,38,.32)!important;
+ border-radius:13px!important;background:linear-gradient(135deg,#fff 0%,#fff9ef 100%)!important;
+ color:#111!important;text-decoration:none!important;
+ box-shadow:0 8px 24px rgba(0,0,0,.08),0 0 0 0 rgba(211,54,43,0)!important;
+ transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease!important;
+ animation:ahadPhoneAttention 4.6s ease-in-out infinite!important;
+}
+.site-header .phone b{position:relative;z-index:2;font-weight:900!important;letter-spacing:.015em!important}
+.site-header .phone::before{
+ content:"";position:absolute;z-index:0;top:-80%;bottom:-80%;left:-38%;width:22%;
+ background:linear-gradient(105deg,transparent,rgba(255,210,91,.12),rgba(255,218,104,.68),rgba(255,255,255,.9),rgba(255,218,104,.18),transparent);
+ transform:skewX(-18deg);animation:ahadPhoneSweep 4.6s ease-in-out infinite;pointer-events:none;
+}
+.site-header .phone::after{
+ content:"CALL NOW";position:relative;z-index:2;
+ padding:5px 8px;border-radius:999px;background:#d3362b;color:#fff;
+ font-size:9px;font-weight:900;letter-spacing:.12em;line-height:1;white-space:nowrap;
+ animation:ahadCallBadge 2.1s ease-in-out infinite;
+}
+.site-header .phone:hover{
+ transform:translateY(-3px) scale(1.025)!important;
+ border-color:#d3362b!important;
+ box-shadow:0 14px 30px rgba(0,0,0,.13),0 0 22px rgba(211,54,43,.16)!important;
+}
+@keyframes ahadPhoneAttention{
+ 0%,72%,100%{box-shadow:0 8px 24px rgba(0,0,0,.08),0 0 0 0 rgba(211,54,43,0)}
+ 80%{box-shadow:0 8px 24px rgba(0,0,0,.08),0 0 0 7px rgba(211,54,43,.10)}
+ 88%{box-shadow:0 8px 24px rgba(0,0,0,.08),0 0 0 0 rgba(211,54,43,0)}
+}
+@keyframes ahadPhoneSweep{
+ 0%,48%{left:-38%;opacity:0}55%{opacity:1}72%{left:118%;opacity:.72}78%,100%{left:118%;opacity:0}
+}
+@keyframes ahadCallBadge{
+ 0%,100%{transform:scale(1);filter:brightness(1)}
+ 50%{transform:scale(1.07);filter:brightness(1.12)}
+}
+@media(max-width:1150px){.site-header .phone::after{display:none}}
+@media(prefers-reduced-motion:reduce){
+ .site-header .phone,.site-header .phone::before,.site-header .phone::after{animation:none!important}
+}
+</style>
+
+
+<style id="ahad-balanced-header-v2">
+/* Balanced desktop header: phone is the single primary action */
+.site-header{display:grid!important;grid-template-columns:minmax(120px,170px) 1fr auto!important;align-items:center!important;column-gap:24px!important;padding-left:clamp(24px,5vw,86px)!important;padding-right:clamp(24px,5vw,86px)!important}
+.site-header .brand{justify-self:start!important}
+.site-header .desktop-nav{justify-self:center!important;display:flex!important;align-items:center!important;gap:clamp(22px,2.6vw,48px)!important}
+.site-header .head-actions{justify-self:end!important;display:flex!important;align-items:center!important}
+.site-header .head-actions>.btn.red{display:none!important}
+.site-header .phone{min-width:0!important;white-space:nowrap!important}
+@media(max-width:1100px){.site-header{display:flex!important}.site-header .desktop-nav{gap:20px!important}}
+</style>
+
+<style id="ahad-solution-cta-v3">
+/* Restore the header action slot as an innovative Service Finder CTA */
+.site-header .head-actions>.btn.red{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ position:relative!important;overflow:hidden!important;min-width:245px!important;
+ padding:17px 20px!important;border-radius:12px!important;
+ background:#101010!important;color:#fff!important;border:1px solid rgba(232,190,75,.72)!important;
+ box-shadow:0 8px 24px rgba(0,0,0,.10),inset 0 0 0 1px rgba(255,255,255,.03)!important;
+ font-size:14px!important;font-weight:900!important;letter-spacing:.035em!important;
+ transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease!important;
+}
+.site-header .head-actions>.btn.red:before{
+ content:"⚡";margin-right:9px;color:#efc553;font-size:18px;
+ animation:solutionBolt 1.45s ease-in-out infinite;
+}
+.site-header .head-actions>.btn.red:after{
+ content:"";position:absolute;left:-45%;bottom:0;width:36%;height:2px;
+ background:linear-gradient(90deg,transparent,#efc553,#fff4b8,#efc553,transparent);
+ box-shadow:0 0 12px rgba(239,197,83,.8);animation:solutionCurrent 3.2s ease-in-out infinite;
+}
+.site-header .head-actions>.btn.red:hover{transform:translateY(-3px)!important;border-color:#f2cd68!important;box-shadow:0 14px 30px rgba(0,0,0,.16),0 0 24px rgba(239,197,83,.18)!important}
+@keyframes solutionBolt{0%,100%{transform:scale(1);filter:brightness(1)}50%{transform:scale(1.18);filter:brightness(1.5);text-shadow:0 0 12px #efc553}}
+@keyframes solutionCurrent{0%{left:-45%;opacity:0}18%{opacity:1}60%{left:112%;opacity:1}70%,100%{left:112%;opacity:0}}
+@media(max-width:1320px){.site-header .head-actions>.btn.red{min-width:205px!important;font-size:12px!important;padding:15px 14px!important}}
+@media(max-width:1100px){.site-header .head-actions>.btn.red{display:none!important}}
+@media(prefers-reduced-motion:reduce){.site-header .head-actions>.btn.red:before,.site-header .head-actions>.btn.red:after{animation:none!important}}
+</style>
+
+<style id="ahad-hero-equal-red-ctas">
+.hero-buttons .btn.outline,.hero-buttons .btn:not(.red){
+ background:#d3362b!important;color:#fff!important;border-color:#d3362b!important;
+ box-shadow:0 10px 24px rgba(211,54,43,.18)!important;
+}
+.hero-buttons .btn.outline:hover,.hero-buttons .btn:not(.red):hover{
+ background:#b92c23!important;border-color:#b92c23!important;
+ transform:translateY(-3px)!important;box-shadow:0 14px 28px rgba(211,54,43,.28)!important;
+}
+</style>
+
+<style id="ahad-compact-red-solution-v4">
+.site-header .head-actions>.btn.red{
+ min-width:0!important;width:auto!important;max-width:245px!important;
+ padding:14px 18px!important;border-radius:9px!important;
+ background:#d3362b!important;color:#fff!important;border:1px solid #d3362b!important;
+ box-shadow:0 8px 18px rgba(211,54,43,.16)!important;
+ font-size:12px!important;line-height:1.15!important;font-weight:900!important;
+ letter-spacing:.025em!important;white-space:nowrap!important;
+}
+.site-header .head-actions>.btn.red:before{content:"⚡"!important;margin-right:7px!important;color:#fff!important;font-size:14px!important;animation:none!important}
+.site-header .head-actions>.btn.red:after{display:none!important}
+.site-header .head-actions>.btn.red:hover{
+ background:#b92c23!important;border-color:#b92c23!important;
+ transform:translateY(-2px)!important;box-shadow:0 11px 22px rgba(211,54,43,.25)!important;
+}
+</style>
+</head><body><header class="site-header"><a class="brand" href="/"><img src="assets/ahad-logo-original.png" alt="Ahad Electrical"></a>
+<nav class="desktop-nav"><a href="/">Home</a><div class="has-mega"><button>Services <span>⌄</span></button><div class="mega"><div><small>ELECTRICAL SERVICES</small><h3>How can we help?</h3><p>Choose the Ahad service that best matches your electrical need.</p><a class="mini-cta" href="service-finder.html">Not sure? Find your service →</a></div><div class="mega-links"><a href="troubleshooting.html"><b>⚡</b><span>Troubleshooting & Repairs</span></a><a href="panels.html"><b>▣</b><span>Electrical Panels</span></a><a href="indoor-lighting.html"><b>✦</b><span>Indoor Lighting</span></a><a href="outdoor-lighting.html"><b>☀</b><span>Outdoor Lighting</span></a><a href="outlets-switches.html"><b>⌁</b><span>Outlets & Switches</span></a><a href="ev-charger-hardwire.html"><b>🔌</b><span>Tesla &amp; EV Charger Installation</span></a></div></div></div><a href="projects.html">Our Work</a><a href="reviews.html">Reviews</a><a href="service-areas.html">Service Areas</a><a href="faq.html">FAQs</a><a href="contact.html">Contact</a></nav>
+<div class="head-actions"><a class="phone" href="tel:+19452898250">☎ <b>(945) 289-8250</b></a><a class="btn red" href="service-finder.html">FIND MY SERVICE →</a></div><button class="menu-toggle" aria-label="Open menu">☰</button></header>
+<div class="mobile-menu"><button class="menu-close">×</button><a href="/">Home</a><a href="services.html">Services</a><a href="projects.html">Our Work</a><a href="reviews.html">Reviews</a><a href="service-areas.html">Service Areas</a><a href="faq.html">FAQs</a><a href="contact.html">Contact</a><a href="https://www.instagram.com/ahadelectricalsolutions/" target="_blank" rel="noopener noreferrer">◎ Instagram</a><a class="btn red" href="estimate.html">Get a Free Estimate</a></div><main>
 <section class="hero">
 <div class="hero-media hero-story-playlist"><video id="heroUserVideo" class="is-active" autoplay muted loop playsinline preload="auto" aria-label="Ahad Electrical service story"><source src="assets/ahad-user-hero.mp4" type="video/mp4"></video></div><div class="hero-overlay"></div>
-<div class="hero-copy reveal"><span class="kicker">AHAD ELECTRICAL • DALLAS–FORT WORTH</span><h1>POWERING DALLAS<br><em>WITH QUALITY YOU CAN TRUST</em></h1><p>Electrical services for home and business needs across the Dallas–Fort Worth area.</p><div class="hero-buttons"><a class="btn red big" href="estimate.html">Get Your Free Estimate →</a><a class="btn glass big" href="services.html">Book / Explore Services</a></div><div class="quick-links"><a href="service-finder.html"><b>Not sure what you need?</b><span>Use our service finder →</span></a><a href="projects.html"><b>See electrical work</b><span>Explore our work →</span></a><a href="reviews.html"><b>Customer reviews</b><span>Open reviews center →</span></a></div></div>
+<div class="hero-copy reveal"><span class="kicker">AHAD ELECTRICAL • DALLAS–FORT WORTH</span><h1>POWERING DALLAS<br><em>WITH QUALITY YOU CAN TRUST</em></h1><p>Electrical services for home and business needs across the Dallas–Fort Worth area.</p><div class="ev-hero-badge"><span class="ev-plug">🔌</span><div class="tesla-cert-banner"><strong>Certified &amp; Licensed Tesla / EV Charger Installation</strong><small>Tesla Wall Connector • EV Chargers • NEMA 14-50 • Dedicated Circuits</small></div></div><div class="hero-buttons"><a class="btn red big" href="estimate.html">Get Your Free Estimate →</a><a class="btn glass big" href="services.html">Book / Explore Services</a></div><div class="quick-links"><a href="service-finder.html"><b>Not sure what you need?</b><span>Use our service finder →</span></a><a href="projects.html"><b>See electrical work</b><span>Explore our work →</span></a><a href="reviews.html"><b>Customer reviews</b><span>Open reviews center →</span></a></div></div>
 
 </section>
-<section class="service-rail"><a href="troubleshooting.html"><i>⚡</i><span>Troubleshooting & Repairs</span></a><a href="panels.html"><i>▣</i><span>Electrical Panels</span></a><a href="indoor-lighting.html"><i>✦</i><span>Indoor Lighting</span></a><a href="outdoor-lighting.html"><i>☀</i><span>Outdoor Lighting</span></a><a href="outlets-switches.html"><i>⌁</i><span>Outlets & Switches</span></a><a href="circuits-wiring.html"><i>⌇</i><span>Circuits & Wiring</span></a><a class="rail-all" href="services.html"><i>＋</i><span>All Services</span></a></section>
+<section class="service-rail"><a href="troubleshooting.html"><i>⚡</i><span>Troubleshooting & Repairs</span></a><a href="panels.html"><i>▣</i><span>Electrical Panels</span></a><a href="indoor-lighting.html"><i>✦</i><span>Indoor Lighting</span></a><a href="outdoor-lighting.html"><i>☀</i><span>Outdoor Lighting</span></a><a href="outlets-switches.html"><i>⌁</i><span>Outlets & Switches</span></a><a class="rail-ev" href="ev-charger-hardwire.html"><i>🔌</i><span>Tesla &amp; EV Charger</span></a><a class="rail-all" href="services.html"><i>＋</i><span>All Services</span></a></section>
 <section class="section intro"><div class="section-title reveal"><span>AHAD ELECTRICAL SERVICES</span><h2>Find the electrical help you need.</h2></div><div class="section-copy reveal"><p>Start with one of Ahad's electrical service categories. Each page gives customers a direct path to describe the issue and request an estimate.</p><a href="service-finder.html">Help me choose a service →</a></div></section>
-<section class="service-grid section"><a class="service-card photo-card reveal" href="troubleshooting.html"><img class="card-photo" src="assets/home-troubleshooting.jpg" alt="Troubleshooting & Repairs"><div class="card-shade"></div><div class="card-content"><div class="service-icon">⚡</div><h3>Troubleshooting & Repairs</h3><p>Diagnose electrical problems and request repair service.</p><span>Explore service →</span></div></a><a class="service-card photo-card reveal" href="panels.html"><img class="card-photo" src="assets/home-panels.jpg" alt="Electrical Panels"><div class="card-shade"></div><div class="card-content"><div class="service-icon">▣</div><h3>Electrical Panels</h3><p>Panel-related electrical service requests.</p><span>Explore service →</span></div></a><a class="service-card photo-card reveal" href="indoor-lighting.html"><img class="card-photo" src="assets/home-indoor-lighting.jpg" alt="Indoor Lighting"><div class="card-shade"></div><div class="card-content"><div class="service-icon">✦</div><h3>Indoor Lighting</h3><p>Indoor lighting service requests for homes and businesses.</p><span>Explore service →</span></div></a><a class="service-card photo-card reveal" href="outdoor-lighting.html"><img class="card-photo" src="assets/home-outdoor-lighting.jpg" alt="Outdoor Lighting"><div class="card-shade"></div><div class="card-content"><div class="service-icon">☀</div><h3>Outdoor Lighting</h3><p>Outdoor lighting service requests.</p><span>Explore service →</span></div></a><a class="service-card photo-card reveal" href="outlets-switches.html"><img class="card-photo" src="assets/home-outlets-switches.jpg" alt="Outlets & Switches"><div class="card-shade"></div><div class="card-content"><div class="service-icon">⌁</div><h3>Outlets & Switches</h3><p>Outlet and switch service requests.</p><span>Explore service →</span></div></a><a class="service-card photo-card reveal" href="circuits-wiring.html"><img class="card-photo" src="assets/home-circuits-wiring.jpg" alt="Circuits & Wiring"><div class="card-shade"></div><div class="card-content"><div class="service-icon">⌇</div><h3>Circuits & Wiring</h3><p>Circuit and wiring service requests.</p><span>Explore service →</span></div></a></section>
+<section class="service-grid section"><a class="service-card photo-card reveal" href="troubleshooting.html"><img class="card-photo" src="assets/home-troubleshooting.jpg" alt="Troubleshooting & Repairs"><div class="card-shade"></div><div class="card-content"><div class="service-icon">⚡</div><h3>Troubleshooting & Repairs</h3><p>Diagnose electrical problems and request repair service.</p><span>Explore service →</span></div></a><a class="service-card photo-card reveal" href="panels.html"><img class="card-photo" src="assets/home-panels.jpg" alt="Electrical Panels"><div class="card-shade"></div><div class="card-content"><div class="service-icon">▣</div><h3>Electrical Panels</h3><p>Panel-related electrical service requests.</p><span>Explore service →</span></div></a><a class="service-card photo-card reveal" href="indoor-lighting.html"><img class="card-photo" src="assets/home-indoor-lighting.jpg" alt="Indoor Lighting"><div class="card-shade"></div><div class="card-content"><div class="service-icon">✦</div><h3>Indoor Lighting</h3><p>Indoor lighting service requests for homes and businesses.</p><span>Explore service →</span></div></a><a class="service-card photo-card reveal" href="outdoor-lighting.html"><img class="card-photo" src="assets/home-outdoor-lighting.jpg" alt="Outdoor Lighting"><div class="card-shade"></div><div class="card-content"><div class="service-icon">☀</div><h3>Outdoor Lighting</h3><p>Outdoor lighting service requests.</p><span>Explore service →</span></div></a><a class="service-card photo-card reveal" href="outlets-switches.html"><img class="card-photo" src="assets/home-outlets-switches.jpg" alt="Outlets & Switches"><div class="card-shade"></div><div class="card-content"><div class="service-icon">⌁</div><h3>Outlets & Switches</h3><p>Outlet and switch service requests.</p><span>Explore service →</span></div></a><a class="service-card photo-card reveal ev-feature-card" href="ev-charger-hardwire.html"><img class="card-photo" src="assets/tesla-ev-charging-background.jpg" alt="Ahad Electrical Tesla and EV charger installation"><div class="card-shade"></div><div class="card-content"><div class="service-icon ev-icon">🔌</div><h3>Tesla &amp; EV Charger Installation</h3><p>Certified &amp; licensed Tesla Wall Connector, EV charger, NEMA 14-50 outlet, and dedicated charging circuit installation.</p><span>Explore EV charging →</span></div></a></section>
 <section class="split dark"><div class="visual reveal"><img src="assets/hero-electrical.jpg" alt="Electrical service visual"></div><div class="split-copy reveal"><span>BUILT AROUND THE CUSTOMER</span><h2>A simpler path from electrical problem to service request.</h2><div class="steps"><div><b>01</b><span>Choose service</span></div><div><b>02</b><span>Describe the problem</span></div><div><b>03</b><span>Add address & photos</span></div><div><b>04</b><span>Send your request</span></div></div><a class="btn gold" href="estimate.html">Start Your Request</a></div></section>
 <section class="finder section reveal"><div><span>WHAT'S GOING ON?</span><h2>Not sure which electrical service to choose?</h2><p>Answer one quick question and we'll point you to the most relevant Ahad service category.</p></div><a class="btn black big" href="service-finder.html">Find My Service →</a></section>
+<section class="instagram-showcase section" aria-labelledby="instagram-title">
+  <div class="instagram-heading reveal">
+    <div>
+      <span>FOLLOW OUR ELECTRICAL WORK</span>
+      <h2 id="instagram-title">See Ahad Electrical on Instagram.</h2>
+      <p>See more project photos, installations, lighting work, EV charging projects, and updates from Ahad Electrical Solutions.</p>
+    </div>
+    <a class="instagram-follow" href="https://www.instagram.com/ahadelectricalsolutions/" target="_blank" rel="noopener noreferrer" aria-label="Follow Ahad Electrical Solutions on Instagram">
+      <span class="instagram-mark" aria-hidden="true">◎</span>
+      <span><small>FOLLOW ON INSTAGRAM</small><strong>@ahadelectricalsolutions</strong></span>
+      <b>↗</b>
+    </a>
+  </div>
+  <div class="instagram-work-grid reveal">
+    <a href="https://www.instagram.com/ahadelectricalsolutions/" target="_blank" rel="noopener noreferrer" aria-label="View Ahad Electrical EV charger work on Instagram"><img src="assets/ev-charger-hardwire.jpg" alt="Ahad Electrical EV charger installation work" loading="lazy"><span>EV Charger Installation <b>↗</b></span></a>
+    <a href="https://www.instagram.com/ahadelectricalsolutions/" target="_blank" rel="noopener noreferrer" aria-label="View Ahad Electrical panel work on Instagram"><img src="assets/user-panel.jpg" alt="Ahad Electrical electrical panel work" loading="lazy"><span>Electrical Panel Work <b>↗</b></span></a>
+    <a href="https://www.instagram.com/ahadelectricalsolutions/" target="_blank" rel="noopener noreferrer" aria-label="View Ahad Electrical lighting work on Instagram"><img src="assets/user-outdoor-lighting.jpg" alt="Ahad Electrical outdoor lighting project" loading="lazy"><span>Outdoor Lighting <b>↗</b></span></a>
+    <a href="https://www.instagram.com/ahadelectricalsolutions/" target="_blank" rel="noopener noreferrer" aria-label="View Ahad Electrical Powerwall work on Instagram"><img src="assets/user-powerwall-install.jpg" alt="Ahad Electrical Powerwall installation work" loading="lazy"><span>Powerwall Installation <b>↗</b></span></a>
+    <a href="https://www.instagram.com/ahadelectricalsolutions/" target="_blank" rel="noopener noreferrer" aria-label="View Ahad Electrical indoor lighting work on Instagram"><img src="assets/user-indoor-fan-light.jpg" alt="Ahad Electrical indoor fan and lighting work" loading="lazy"><span>Indoor Lighting <b>↗</b></span></a>
+    <a href="https://www.instagram.com/ahadelectricalsolutions/" target="_blank" rel="noopener noreferrer" aria-label="View Ahad Electrical commercial work on Instagram"><img src="assets/commercial-led-work.jpg" alt="Ahad Electrical commercial LED installation work" loading="lazy"><span>Commercial LED Work <b>↗</b></span></a>
+  </div>
+  <div class="instagram-bottom reveal"><p>Want to see more recent projects?</p><a class="btn black" href="https://www.instagram.com/ahadelectricalsolutions/" target="_blank" rel="noopener noreferrer">View @ahadelectricalsolutions on Instagram ↗</a></div>
+</section>
 <section class="reviews-preview section"><div class="section-title reveal"><span>CUSTOMER EXPERIENCE</span><h2>See what customers say about Ahad Electrical.</h2><p>Explore customer feedback and learn more about the work Ahad Electrical provides across DFW.</p></div><div class="review-platforms reveal"><a href="reviews.html"><b>Customer Reviews</b><span>Read feedback and customer experiences.</span><strong>View Reviews →</strong></a><a href="projects.html"><b>Recent Work</b><span>See electrical projects and installations.</span><strong>View Our Work →</strong></a></div></section>
 <section class="cta-band"><div><span>NEED ELECTRICAL HELP?</span><h2>Tell Ahad what you need.</h2></div><a class="btn white big" href="estimate.html">Get a Free Estimate →</a><a class="cta-phone" href="tel:+19452898250">☎ (945) 289-8250</a></section>
-</main><footer><div class="footer-grid"><div><img src="assets/ahad-logo-original.png" alt="Ahad Electrical"><p>Electrical services for home and business needs across DFW.</p><a href="tel:+19452898250">(945) 289-8250</a><a href="mailto:ahadelecticalsolutions@gmail.com">ahadelecticalsolutions@gmail.com</a></div><div><h4>Services</h4><a href="troubleshooting.html">Troubleshooting & Repairs</a><a href="panels.html">Electrical Panels</a><a href="indoor-lighting.html">Indoor Lighting</a><a href="outdoor-lighting.html">Outdoor Lighting</a><a href="outlets-switches.html">Outlets & Switches</a><a href="circuits-wiring.html">Circuits & Wiring</a></div><div><h4>Explore</h4><a href="projects.html">Our Work</a><a href="reviews.html">Reviews</a><a href="service-areas.html">Service Areas</a><a href="faq.html">FAQs</a><a href="contact.html">Contact</a></div><div><h4>Get Started</h4><p>Tell us what is happening and send photos if helpful.</p><a class="btn red" href="estimate.html">Request Estimate</a></div></div><div class="footer-bottom">© 2026 Ahad Electrical. All rights reserved.</div></footer><div class="mobile-bar"><a href="tel:+19452898250">☎ Call</a><a href="estimate.html">Estimate</a></div><script src="script.js"></script>
+</main><footer><div class="footer-grid"><div><img src="assets/ahad-logo-original.png" alt="Ahad Electrical"><p>Electrical services for home and business needs across DFW.</p><a href="tel:+19452898250">(945) 289-8250</a><a href="mailto:ahadelecticalsolution@gmail.com">ahadelecticalsolution@gmail.com</a></div><div><h4>Services</h4><a href="troubleshooting.html">Troubleshooting & Repairs</a><a href="panels.html">Electrical Panels</a><a href="indoor-lighting.html">Indoor Lighting</a><a href="outdoor-lighting.html">Outdoor Lighting</a><a href="outlets-switches.html">Outlets & Switches</a><a href="ev-charger-hardwire.html">Tesla &amp; EV Charger Installation</a></div><div><h4>Explore</h4><a href="projects.html">Our Work</a><a href="reviews.html">Reviews</a><a href="service-areas.html">Service Areas</a><a href="faq.html">FAQs</a><a href="contact.html">Contact</a><a class="instagram-footer-link" href="https://www.instagram.com/ahadelectricalsolutions/" target="_blank" rel="noopener noreferrer" aria-label="Ahad Electrical Solutions on Instagram">◎ Instagram</a></div><div><h4>Get Started</h4><p>Tell us what is happening and send photos if helpful.</p><a class="btn red" href="estimate.html">Request Estimate</a></div></div><div class="footer-bottom">© 2026 Ahad Electrical. All rights reserved.</div></footer><div class="mobile-bar"><a href="tel:+19452898250">☎ Call</a><a href="estimate.html">Estimate</a></div><script src="script.js"></script><script>document.addEventListener("DOMContentLoaded",()=>{const c=document.getElementById("ahadServiceCursor");if(c)c.remove();});</script>
 <style>
 .hero-story-playlist{position:absolute;inset:0;overflow:hidden;background:#050505}
 .hero-story-playlist video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease;pointer-events:none}
@@ -23,4 +346,70 @@
 <script>
 (()=>{const clips=[document.getElementById('heroStoryA'),document.getElementById('heroStoryB')].filter(Boolean);if(!clips.length)return;let i=0;clips[0].classList.add('is-active');clips.forEach((v,n)=>{v.muted=true;v.playsInline=true;v.loop=false;v.addEventListener('ended',()=>{v.classList.remove('is-active');v.currentTime=0;i=(n+1)%clips.length;const next=clips[i];next.classList.add('is-active');next.play().catch(()=>{});});});clips[0].play().catch(()=>{});})();
 </script>
+
+<style>
+/* Tesla / EV homepage enhancement */
+.ev-hero-badge{display:flex;align-items:center;gap:16px;max-width:760px;margin:22px 0 26px;padding:16px 18px;border:1px solid rgba(255,210,92,.48);border-radius:14px;background:rgba(8,8,8,.58);backdrop-filter:blur(8px);box-shadow:0 12px 34px rgba(0,0,0,.22)}
+.ev-hero-badge .ev-plug{display:grid;place-items:center;flex:0 0 52px;width:52px;height:52px;border-radius:50%;background:#e0b94f;font-size:25px;box-shadow:0 0 0 7px rgba(224,185,79,.12)}
+.ev-hero-badge strong{display:block;color:#fff;font-size:clamp(17px,1.6vw,24px);line-height:1.2}
+.ev-hero-badge small{display:block;margin-top:6px;color:#f3d779;font-size:13px;letter-spacing:.03em}
+.ev-feature-card{position:relative;isolation:isolate;box-shadow:0 18px 45px rgba(0,0,0,.16);border:1px solid rgba(212,167,54,.55)!important}
+.ev-feature-card .card-photo{object-position:center!important;transition:transform .75s cubic-bezier(.2,.7,.2,1),filter .5s ease!important}
+.ev-feature-card .card-shade{background:linear-gradient(90deg,rgba(6,6,6,.92) 0%,rgba(6,6,6,.72) 42%,rgba(6,6,6,.20) 76%,rgba(6,6,6,.05) 100%)!important}
+.ev-feature-card .ev-icon{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#e0b94f;color:#111;font-style:normal;font-size:25px;box-shadow:0 0 0 0 rgba(224,185,79,.5);animation:evPulse 2.4s infinite}
+.ev-feature-card:hover .card-photo{transform:scale(1.035)!important;filter:brightness(1.06)}
+.ev-feature-card:hover{transform:translateY(-8px)!important;box-shadow:0 26px 60px rgba(0,0,0,.22)}
+@keyframes evPulse{0%,100%{box-shadow:0 0 0 0 rgba(224,185,79,.45)}50%{box-shadow:0 0 0 12px rgba(224,185,79,0)}}
+/* stronger scroll reveal without changing the rest of the layout */
+.reveal.scroll-enhanced{opacity:0;transform:translateY(42px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}
+.reveal.scroll-enhanced.in-view{opacity:1;transform:none}
+.service-grid .reveal.scroll-enhanced:nth-child(2){transition-delay:.07s}.service-grid .reveal.scroll-enhanced:nth-child(3){transition-delay:.14s}.service-grid .reveal.scroll-enhanced:nth-child(4){transition-delay:.21s}.service-grid .reveal.scroll-enhanced:nth-child(5){transition-delay:.28s}.service-grid .reveal.scroll-enhanced:nth-child(6){transition-delay:.35s}
+@media(max-width:700px){.ev-hero-badge{align-items:flex-start}.ev-hero-badge small{line-height:1.45}.ev-feature-card .card-shade{background:linear-gradient(0deg,rgba(6,6,6,.92),rgba(6,6,6,.22))!important}}
+@media(prefers-reduced-motion:reduce){.reveal.scroll-enhanced,.ev-feature-card .card-photo{transition:none!important}.ev-feature-card .ev-icon{animation:none}}
+</style>
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('in-view')});return;}
+  els.forEach(function(el){el.classList.add('scroll-enhanced')});
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -45px 0px'});
+  els.forEach(function(el){io.observe(el)});
+})();
+</script>
+
+
+
+<!-- GoDaddy Conversations / Re:amaze Website Chat -->
+<script type="text/javascript" async src="https://cdn.reamaze.com/assets/reamaze-loader.js"></script>
+<script type="text/javascript">
+  var _support = _support || { 'ui': {}, 'user': {} };
+  _support['account'] = 'ff8fc6af-43db-4690-8d1a-91b3efd3f995';
+  _support['ui']['contactMode'] = 'mixed';
+  _support['ui']['enableKb'] = 'true';
+  _support['ui']['mailbox'] = '33461374';
+  _support['ui']['styles'] = {
+    widgetColor: 'rgba(16, 162, 197, 1)',
+    gradient: true,
+  };
+  _support['ui']['shoutboxFacesMode'] = '';
+  _support['ui']['widget'] = {
+    allowBotProcessing: 'true',
+    slug: 'ahad-electrical-2-dot-0',
+    label: {
+      text: 'Let us know if you have any questions! 😊',
+      mode: "notification",
+      delay: 3,
+      duration: 30,
+      primary: '',
+      sound: true,
+    },
+    position: 'bottom-right'
+  };
+  _support['apps'] = {
+    recentConversations: {},
+    faq: {"enabled":true}
+  };
+</script>
+<!-- End GoDaddy Conversations Website Chat -->
+
 </body></html>
